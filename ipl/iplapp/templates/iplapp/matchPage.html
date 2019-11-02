@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+ table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+body {
+  background-color: powderblue;
+}
+h2 {
+  color: black;
+}
+h3{
+color: blue;
+}
+
+  </style>
+    <title>Match Details Page</title>
+</head>
+<body>
+<button type="button"><a href="{% url 'logOut' %}">LogOut</a></button>
+
+<h2>{{seasonsDetails.0.team1}} vs {{seasonsDetails.0.team2}}</h2>
+<h3>Toss Winner: {{seasonsDetails.0.toss_winner}}</h3>
+<h3>Toss Decision: To {{seasonsDetails.0.toss_decision}}</h3>
+<h3>Match Winner: {{seasonsDetails.0.winner}}</h3>
+<h3>Winning By Runs: {{seasonsDetails.0.win_by_run}}</h3>
+<h3>Winning By Wickets: {{seasonsDetails.0.win_by_wicket}}</h3>
+<h3>Man Of The Match: {{seasonsDetails.0.player_of_match}}</h3>
+
+
+<table border="1">
+  <tr>
+    <th>Batting Team</th>
+    <th>Bowling Team</th>
+    <th>Over</th>
+    <th>Ball</th>
+    <th>Batsman</th>
+    <th>Non-Striker</th>
+    <th>Bowler</th>
+    <th>Is Super Over</th>
+    <th>Wide Runs</th>
+    <th>No Ball</th>
+    <th>Penalty Runs</th>
+      <th>Batsman Runs</th>
+    <th>Extra Runs</th>
+    <th>Total Runs</th>
+    <th>Player Dismissed</th>
+    <th>Dismissal Kind</th>
+    <th>Fielder</th>
+
+  </tr>
+  {% for x in matchDetails %}
+  <tr>
+    <td>{{x.batting_team}}</td>
+    <td>{{x.bowling_team}}</td>
+    <td>{{x.over}}</td>
+    <td>{{x.ball}}</td>
+    <td>{{x.batsman}}</td>
+    <td>{{x.non_striker}}</td>
+    <td>{{x.bowler}}</td>
+      <td>{{x.is_super_over}}</td>
+    <td>{{x.wide_runs}}</td>
+    <td>{{x.noball_runs}}</td>
+    <td>{{x.penalty_runs}}</td>
+    <td>{{x.batsman_runs}}</td>
+    <td>{{x.extra_runs}}</td>
+    <td>{{x.total_runs}}</td>
+    <td>{{x.player_dismissed}}</td>
+    <td>{{x.dismissal_kind}}</td>
+    <td>{{x.fielder}}</td>
+
+  </tr>
+  {% endfor %}
+</table>
+
+</body>
+</html>

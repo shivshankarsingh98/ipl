@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+ table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+body {
+  background-color: powderblue;
+}
+h2 {
+  color: black;
+}
+
+  </style>
+    <title>Ipl Season Page</title>
+</head>
+<body>
+<button type="button"><a href="{% url 'logOut' %}">LogOut</a></button>
+
+<h2>Match Details Of Season {{seasonsDetails.1.season}}</h2>
+
+<form method="post">
+        {% csrf_token%}
+
+  <select name="season_year">
+    <option value="2019">2019</option>
+    <option value="2018">2018</option>
+    <option value="2017">2017</option>
+    <option value="2016">2016</option>
+      <option value="2015">2015</option>
+      <option value="2014">2014</option>
+      <option value="2013">2013</option>
+      <option value="2012">2012</option>
+      <option value="2011">2011</option>
+      <option value="2010">2010</option>
+      <option value="2009">2009</option>
+      <option value="2008">2008</option>
+
+  </select>
+  <br><br>
+  <input type="submit">
+</form>
+<table border="1">
+  <tr >
+    <th>Team 1</th>
+    <th>Team 2</th>
+    <th>Venu</th>
+    <th>Toss Result</th>
+    <th>Toss Decision</th>
+    <th>Result</th>
+    <th>Player Of The Match</th>
+    <th>View Match Details</th>
+  </tr>
+  {% for x in seasonsDetails %}
+  <tr>
+    <td>{{x.team1}}</td>
+    <td>{{x.team2}}</td>
+    <td>{{x.city}}</td>
+    <td>{{x.toss_winner}}</td>
+    <td>{{x.toss_decision}}</td>
+    <td>{{x.winner}}</td>
+    <td>{{x.player_of_match}}</td>
+    <td><button type="button" onclick="window.location.href='matchdetails/{{x.id}}/'">View Match Details</button></td>
+  </tr>
+  {% endfor %}
+</table>
+
+</body>
+</html>
